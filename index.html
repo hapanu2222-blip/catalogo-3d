@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Catálogo 3D</title>
+
+    <!-- Biblioteca do Google para visualizar 3D + AR -->
+    <script
+        type="module"
+        src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js">
+    </script>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1b1b1b;
+        }
+
+        .pagina {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .produto {
+            width: 100%;
+            max-width: 1100px;
+
+            background: white;
+
+            border-radius: 24px;
+
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,0.10);
+        }
+
+        .visualizador {
+            background:
+                linear-gradient(
+                    135deg,
+                    #eef3f8,
+                    #ffffff
+                );
+
+            min-height: 600px;
+
+            position: relative;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 600px;
+        }
+
+        .ar-button {
+            position: absolute;
+
+            bottom: 25px;
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            padding:
+                16px 28px;
+
+            border: none;
+            border-radius: 50px;
+
+            background:
+                #0066ff;
+
+            color: white;
+
+            font-size: 16px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,102,255,.3);
+        }
+
+        .informacoes {
+            padding: 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .categoria {
+            color: #0066ff;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 38px;
+            margin-bottom: 18px;
+        }
+
+        .descricao {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .dados {
+            margin-bottom: 35px;
+        }
+
+        .dados p {
+            padding:
+                12px 0;
+
+            border-bottom:
+                1px solid #eeeeee;
+        }
+
+        .orcamento {
+            display: block;
+
+            width: 100%;
+
+            text-align: center;
+
+            padding:
+                17px;
+
+            border-radius:
+                12px;
+
+            background:
+                #121212;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .ajuda {
+            margin-top: 14px;
+            color: #888;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        @media(max-width: 800px) {
+
+            .pagina {
+                padding: 0;
+            }
+
+            .produto {
+                border-radius: 0;
+                grid-template-columns: 1fr;
+            }
+
+            .visualizador {
+                min-height: 430px;
+            }
+
+            model-viewer {
+                height: 430px;
+            }
+
+            .informacoes {
+                padding: 30px;
+            }
+
+            h1 {
+                font-size: 30px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+<div class="pagina">
+
+    <div class="produto">
+
+        <!-- ÁREA 3D -->
+
+        <div class="visualizador">
+
+            <model-viewer
+
+                src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+
+                alt="Produto demonstrativo em 3D"
+
+                camera-controls
+
+                auto-rotate
+
+                shadow-intensity="1"
+
+                ar
+
+                ar-modes="webxr scene-viewer quick-look"
+
+                ar-placement="floor"
+
+                touch-action="pan-y"
+
+            >
+
+                <!-- Nosso botão personalizado -->
+
+                <button
+                    slot="ar-button"
+                    class="ar-button"
+                >
+                    📱 Ver no meu ambiente
+                </button>
+
+            </model-viewer>
+
+        </div>
+
+
+        <!-- INFORMAÇÕES -->
+
+        <div class="informacoes">
+
+            <div class="categoria">
+                EQUIPAMENTO MÉDICO
+            </div>
+
+            <h1>
+                Produto Demonstrativo
+            </h1>
+
+            <p class="descricao">
+
+                Visualize o equipamento em 3D,
+                observe todos os detalhes e veja
+                como ele ficaria dentro do seu
+                consultório utilizando realidade
+                aumentada.
+
+            </p>
+
+
+            <div class="dados">
+
+                <p>
+                    <strong>Altura:</strong>
+                    160 cm
+                </p>
+
+                <p>
+                    <strong>Largura:</strong>
+                    70 cm
+                </p>
+
+                <p>
+                    <strong>Profundidade:</strong>
+                    80 cm
+                </p>
+
+                <p>
+                    <strong>Garantia:</strong>
+                    24 meses
+                </p>
+
+            </div>
+
+
+            <a
+                class="orcamento"
+                href="#"
+            >
+                Solicitar orçamento
+            </a>
+
+
+            <p class="ajuda">
+                Arraste o produto para girar •
+                Use dois dedos para ampliar
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
