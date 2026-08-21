@@ -9,9 +9,9 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Catálogo 3D</title>
+    <title>Philips Affiniti 50 | Catálogo 3D</title>
 
-    <!-- Biblioteca do Google para visualizar 3D + AR -->
+    <!-- Visualizador 3D + Realidade Aumentada -->
     <script
         type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js">
@@ -20,15 +20,15 @@
     <style>
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            background: #f4f6f8;
-            color: #1b1b1b;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f3f6f9;
+            color: #111827;
         }
 
         .pagina {
@@ -41,105 +41,178 @@
 
         .produto {
             width: 100%;
-            max-width: 1100px;
-
-            background: white;
-
-            border-radius: 24px;
+            max-width: 1180px;
 
             display: grid;
-            grid-template-columns: 1.2fr 1fr;
+            grid-template-columns: 1.25fr 1fr;
 
+            background: #ffffff;
+
+            border-radius: 28px;
             overflow: hidden;
 
             box-shadow:
-                0 20px 60px
-                rgba(0,0,0,0.10);
+                0 25px 80px
+                rgba(0, 0, 0, 0.12);
         }
 
+        /* =========================
+           ÁREA DO MODELO 3D
+        ========================== */
+
         .visualizador {
-            background:
-                linear-gradient(
-                    135deg,
-                    #eef3f8,
-                    #ffffff
-                );
-
-            min-height: 600px;
-
             position: relative;
+
+            min-height: 650px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    #ffffff 0%,
+                    #eef3f8 65%,
+                    #e5ebf1 100%
+                );
         }
 
         model-viewer {
             width: 100%;
-            height: 600px;
+            height: 650px;
+
+            --poster-color: transparent;
+        }
+
+        .badge-3d {
+            position: absolute;
+
+            top: 25px;
+            left: 25px;
+
+            z-index: 10;
+
+            padding: 10px 15px;
+
+            background: rgba(255, 255, 255, 0.9);
+
+            border-radius: 30px;
+
+            font-size: 12px;
+            font-weight: bold;
+
+            box-shadow:
+                0 6px 20px
+                rgba(0, 0, 0, 0.08);
         }
 
         .ar-button {
             position: absolute;
 
-            bottom: 25px;
             left: 50%;
+            bottom: 28px;
 
-            transform:
-                translateX(-50%);
-
-            padding:
-                16px 28px;
+            transform: translateX(-50%);
 
             border: none;
+
+            padding: 16px 26px;
+
             border-radius: 50px;
 
-            background:
-                #0066ff;
-
+            background: #0878d1;
             color: white;
 
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
 
             cursor: pointer;
 
             box-shadow:
-                0 8px 25px
-                rgba(0,102,255,.3);
+                0 10px 30px
+                rgba(8, 120, 209, 0.35);
+
+            white-space: nowrap;
         }
 
+        .ar-button:hover {
+            background: #0566b5;
+        }
+
+
+        /* =========================
+           INFORMAÇÕES
+        ========================== */
+
         .informacoes {
-            padding: 55px;
+            padding: 60px;
+
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .categoria {
-            color: #0066ff;
-            font-size: 14px;
+        .marca {
+            color: #0878d1;
+
+            font-size: 13px;
             font-weight: bold;
-            margin-bottom: 12px;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
         }
 
-        h1 {
-            font-size: 38px;
+        .categoria {
+            color: #687385;
+
+            font-size: 13px;
+
             margin-bottom: 18px;
         }
 
+        h1 {
+            font-size: 42px;
+            line-height: 1.05;
+
+            margin-bottom: 20px;
+        }
+
         .descricao {
-            color: #666;
-            line-height: 1.6;
+            color: #667085;
+
+            font-size: 16px;
+            line-height: 1.7;
+
             margin-bottom: 30px;
         }
 
         .dados {
-            margin-bottom: 35px;
+            margin-bottom: 32px;
         }
 
         .dados p {
-            padding:
-                12px 0;
+            display: flex;
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 14px 0;
 
             border-bottom:
-                1px solid #eeeeee;
+                1px solid #e9edf2;
+
+            color: #475467;
+        }
+
+        .dados strong {
+            color: #101828;
+        }
+
+        .acoes {
+            display: grid;
+
+            grid-template-columns:
+                1fr;
+
+            gap: 12px;
         }
 
         .orcamento {
@@ -147,30 +220,58 @@
 
             width: 100%;
 
-            text-align: center;
+            padding: 17px 20px;
 
-            padding:
-                17px;
+            border-radius: 12px;
 
-            border-radius:
-                12px;
-
-            background:
-                #121212;
-
+            background: #101828;
             color: white;
+
+            text-align: center;
 
             text-decoration: none;
 
             font-weight: bold;
+
+            transition: 0.2s;
         }
 
-        .ajuda {
-            margin-top: 14px;
-            color: #888;
-            font-size: 13px;
+        .orcamento:hover {
+            background: #263348;
+        }
+
+        .instrucao {
+            margin-top: 16px;
+
+            text-align: center;
+
+            font-size: 12px;
+
+            color: #98a2b3;
+        }
+
+        .aviso {
+            margin-top: 18px;
+
+            padding: 12px 14px;
+
+            border-radius: 10px;
+
+            background: #f7f9fb;
+
+            color: #98a2b3;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+
             text-align: center;
         }
+
+
+        /* =========================
+           CELULAR
+        ========================== */
 
         @media(max-width: 800px) {
 
@@ -179,28 +280,45 @@
             }
 
             .produto {
-                border-radius: 0;
                 grid-template-columns: 1fr;
+
+                border-radius: 0;
+
+                min-height: 100vh;
             }
 
             .visualizador {
-                min-height: 430px;
+                min-height: 480px;
             }
 
             model-viewer {
-                height: 430px;
+                height: 480px;
             }
 
             .informacoes {
-                padding: 30px;
+                padding: 32px 25px 45px;
             }
 
             h1 {
-                font-size: 30px;
+                font-size: 32px;
             }
+
+            .descricao {
+                font-size: 15px;
+            }
+
+            .ar-button {
+                bottom: 20px;
+
+                font-size: 14px;
+
+                padding: 15px 22px;
+            }
+
         }
 
     </style>
+
 </head>
 
 
@@ -208,23 +326,44 @@
 
 <div class="pagina">
 
-    <div class="produto">
+    <main class="produto">
 
-        <!-- ÁREA 3D -->
+        <!-- =========================
+             MODELO 3D
+        ========================== -->
 
-        <div class="visualizador">
+        <section class="visualizador">
+
+            <div class="badge-3d">
+                MODELO 3D INTERATIVO
+            </div>
+
 
             <model-viewer
 
-                src="https://modelviewer.dev/shared-assets/models/Astronaut.glb"
+                src="./affiniti50.glb.glb"
 
-                alt="Produto demonstrativo em 3D"
+                alt="Modelo 3D demonstrativo do Philips Affiniti 50"
 
                 camera-controls
 
                 auto-rotate
 
+                auto-rotate-delay="1500"
+
+                rotation-per-second="18deg"
+
                 shadow-intensity="1"
+
+                shadow-softness="0.8"
+
+                exposure="1"
+
+                environment-image="neutral"
+
+                interaction-prompt="auto"
+
+                touch-action="pan-y"
 
                 ar
 
@@ -232,11 +371,7 @@
 
                 ar-placement="floor"
 
-                touch-action="pan-y"
-
             >
-
-                <!-- Nosso botão personalizado -->
 
                 <button
                     slot="ar-button"
@@ -247,75 +382,103 @@
 
             </model-viewer>
 
-        </div>
+        </section>
 
 
-        <!-- INFORMAÇÕES -->
 
-        <div class="informacoes">
+        <!-- =========================
+             INFORMAÇÕES DO PRODUTO
+        ========================== -->
 
-            <div class="categoria">
-                EQUIPAMENTO MÉDICO
+        <section class="informacoes">
+
+            <div class="marca">
+                PHILIPS
             </div>
 
+            <div class="categoria">
+                SISTEMA DE ULTRASSOM
+            </div>
+
+
             <h1>
-                Produto Demonstrativo
+                Affiniti 50
             </h1>
+
 
             <p class="descricao">
 
-                Visualize o equipamento em 3D,
-                observe todos os detalhes e veja
-                como ele ficaria dentro do seu
-                consultório utilizando realidade
-                aumentada.
+                Explore o Philips Affiniti 50 em 3D,
+                observe o equipamento em diferentes
+                ângulos e visualize como ele ficaria
+                dentro da sua clínica ou ambiente
+                utilizando realidade aumentada.
 
             </p>
+
 
 
             <div class="dados">
 
                 <p>
-                    <strong>Altura:</strong>
-                    160 cm
+                    <strong>Marca</strong>
+                    <span>Philips</span>
                 </p>
 
                 <p>
-                    <strong>Largura:</strong>
-                    70 cm
+                    <strong>Modelo</strong>
+                    <span>Affiniti 50</span>
                 </p>
 
                 <p>
-                    <strong>Profundidade:</strong>
-                    80 cm
+                    <strong>Categoria</strong>
+                    <span>Ultrassom</span>
                 </p>
 
                 <p>
-                    <strong>Garantia:</strong>
-                    24 meses
+                    <strong>Visualização</strong>
+                    <span>3D + AR</span>
                 </p>
 
             </div>
 
 
-            <a
-                class="orcamento"
-                href="#"
-            >
-                Solicitar orçamento
-            </a>
+
+            <div class="acoes">
+
+                <a
+                    class="orcamento"
+                    href="#"
+                >
+                    Solicitar orçamento
+                </a>
+
+            </div>
 
 
-            <p class="ajuda">
-                Arraste o produto para girar •
+
+            <p class="instrucao">
+                Arraste para girar •
                 Use dois dedos para ampliar
             </p>
 
-        </div>
 
-    </div>
+
+            <div class="aviso">
+
+                Modelo 3D demonstrativo criado para
+                visualização conceitual. A representação
+                tridimensional não corresponde a um
+                arquivo CAD oficial fornecido pelo fabricante.
+
+            </div>
+
+        </section>
+
+    </main>
 
 </div>
+
 
 </body>
 
