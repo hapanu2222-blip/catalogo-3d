@@ -9,9 +9,9 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Philips Affiniti 50 | Catálogo 3D</title>
+    <title>Affiniti 50 | Barbosa Equipamentos Hospitalares</title>
 
-    <!-- Visualizador 3D + Realidade Aumentada -->
+    <!-- Visualizador 3D + AR -->
     <script
         type="module"
         src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.3.1/model-viewer.min.js">
@@ -25,40 +25,116 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f3f6f9;
-            color: #111827;
+        :root {
+            --azul: #062b4e;
+            --azul-claro: #0b416f;
+            --verde: #26b8a5;
+            --texto: #152033;
+            --cinza: #667085;
+            --fundo: #eef3f7;
         }
 
-        .pagina {
-            min-height: 100vh;
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--fundo);
+            color: var(--texto);
+        }
+
+        /* ========================
+           CABEÇALHO
+        ======================== */
+
+        .topo {
+            background: var(--azul);
+            color: white;
+
+            padding: 18px 30px;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .empresa {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .logo {
+            width: 46px;
+            height: 46px;
+
+            background: white;
+            color: var(--azul);
+
+            border-radius: 12px;
+
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px;
+
+            font-size: 27px;
+            font-weight: 900;
+        }
+
+        .empresa-nome {
+            font-size: 16px;
+            font-weight: 800;
+        }
+
+        .empresa-sub {
+            font-size: 10px;
+            letter-spacing: 2px;
+            opacity: .75;
+            margin-top: 3px;
+        }
+
+        .slogan {
+            font-size: 13px;
+            opacity: .9;
+        }
+
+        .slogan strong {
+            color: var(--verde);
+        }
+
+
+        /* ========================
+           CONTEÚDO
+        ======================== */
+
+        .pagina {
+            min-height: calc(100vh - 82px);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 35px;
         }
 
         .produto {
             width: 100%;
-            max-width: 1180px;
+            max-width: 1200px;
 
             display: grid;
             grid-template-columns: 1.25fr 1fr;
 
-            background: #ffffff;
+            background: white;
 
             border-radius: 28px;
             overflow: hidden;
 
             box-shadow:
                 0 25px 80px
-                rgba(0, 0, 0, 0.12);
+                rgba(6, 43, 78, 0.14);
         }
 
-        /* =========================
-           ÁREA DO MODELO 3D
-        ========================== */
+
+        /* ========================
+           3D
+        ======================== */
 
         .visualizador {
             position: relative;
@@ -69,8 +145,8 @@
                 radial-gradient(
                     circle at center,
                     #ffffff 0%,
-                    #eef3f8 65%,
-                    #e5ebf1 100%
+                    #eef4f7 65%,
+                    #e4ebf0 100%
                 );
         }
 
@@ -81,7 +157,7 @@
             --poster-color: transparent;
         }
 
-        .badge-3d {
+        .badge {
             position: absolute;
 
             top: 25px;
@@ -91,16 +167,18 @@
 
             padding: 10px 15px;
 
-            background: rgba(255, 255, 255, 0.9);
+            background: white;
 
             border-radius: 30px;
 
-            font-size: 12px;
+            font-size: 11px;
             font-weight: bold;
 
+            color: var(--azul);
+
             box-shadow:
-                0 6px 20px
-                rgba(0, 0, 0, 0.08);
+                0 5px 20px
+                rgba(0,0,0,.08);
         }
 
         .ar-button {
@@ -113,11 +191,11 @@
 
             border: none;
 
-            padding: 16px 26px;
+            padding: 16px 27px;
 
             border-radius: 50px;
 
-            background: #0878d1;
+            background: var(--verde);
             color: white;
 
             font-size: 15px;
@@ -127,153 +205,207 @@
 
             box-shadow:
                 0 10px 30px
-                rgba(8, 120, 209, 0.35);
+                rgba(38,184,165,.35);
 
             white-space: nowrap;
         }
 
-        .ar-button:hover {
-            background: #0566b5;
-        }
 
-
-        /* =========================
-           INFORMAÇÕES
-        ========================== */
+        /* ========================
+           PRODUTO
+        ======================== */
 
         .informacoes {
-            padding: 60px;
+            padding: 55px;
 
             display: flex;
             flex-direction: column;
             justify-content: center;
         }
 
-        .marca {
-            color: #0878d1;
+        .apresentado {
+            font-size: 11px;
+            color: var(--verde);
 
-            font-size: 13px;
             font-weight: bold;
-
             letter-spacing: 1px;
 
             margin-bottom: 10px;
         }
 
-        .categoria {
-            color: #687385;
-
+        .marca {
             font-size: 13px;
 
-            margin-bottom: 18px;
+            color: var(--azul);
+
+            font-weight: 800;
+
+            margin-bottom: 7px;
         }
 
         h1 {
             font-size: 42px;
-            line-height: 1.05;
+            line-height: 1;
 
-            margin-bottom: 20px;
+            color: var(--azul);
+
+            margin-bottom: 12px;
+        }
+
+        .categoria {
+            color: var(--cinza);
+
+            font-size: 13px;
+
+            margin-bottom: 25px;
+        }
+
+        .destaque {
+            font-size: 20px;
+            line-height: 1.35;
+
+            color: var(--texto);
+
+            font-weight: 700;
+
+            margin-bottom: 16px;
         }
 
         .descricao {
-            color: #667085;
+            color: var(--cinza);
 
-            font-size: 16px;
             line-height: 1.7;
+
+            font-size: 15px;
 
             margin-bottom: 30px;
         }
 
-        .dados {
-            margin-bottom: 32px;
+
+        /* ========================
+           BENEFÍCIOS
+        ======================== */
+
+        .beneficios {
+            margin-bottom: 28px;
         }
 
-        .dados p {
-            display: flex;
-            justify-content: space-between;
-
-            gap: 20px;
-
-            padding: 14px 0;
+        .beneficio {
+            padding: 12px 0;
 
             border-bottom:
-                1px solid #e9edf2;
+                1px solid #e8edf2;
 
-            color: #475467;
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 14px;
         }
 
-        .dados strong {
-            color: #101828;
+        .check {
+            width: 22px;
+            height: 22px;
+
+            border-radius: 50%;
+
+            background: #e8f8f5;
+            color: var(--verde);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
         }
 
-        .acoes {
-            display: grid;
 
-            grid-template-columns:
-                1fr;
+        /* ========================
+           CTA
+        ======================== */
 
-            gap: 12px;
-        }
-
-        .orcamento {
+        .cta {
             display: block;
 
             width: 100%;
 
-            padding: 17px 20px;
+            padding: 17px;
 
             border-radius: 12px;
 
-            background: #101828;
+            background: var(--azul);
             color: white;
 
-            text-align: center;
-
             text-decoration: none;
+            text-align: center;
 
             font-weight: bold;
 
-            transition: 0.2s;
+            transition: .2s;
         }
 
-        .orcamento:hover {
-            background: #263348;
+        .cta:hover {
+            background: var(--azul-claro);
         }
 
-        .instrucao {
-            margin-top: 16px;
+        .cta-secundario {
+            display: block;
 
+            width: 100%;
+
+            margin-top: 10px;
+
+            padding: 15px;
+
+            border-radius: 12px;
+
+            border: 1px solid #d7e0e7;
+
+            color: var(--azul);
+
+            text-decoration: none;
             text-align: center;
 
-            font-size: 12px;
-
-            color: #98a2b3;
+            font-weight: bold;
         }
 
-        .aviso {
-            margin-top: 18px;
-
-            padding: 12px 14px;
-
-            border-radius: 10px;
-
-            background: #f7f9fb;
+        .ajuda {
+            text-align: center;
 
             color: #98a2b3;
 
             font-size: 11px;
 
+            margin-top: 14px;
+        }
+
+        .aviso {
+            margin-top: 18px;
+
+            font-size: 10px;
+
             line-height: 1.5;
+
+            color: #98a2b3;
 
             text-align: center;
         }
 
 
-        /* =========================
-           CELULAR
-        ========================== */
+        /* ========================
+           MOBILE
+        ======================== */
 
         @media(max-width: 800px) {
+
+            .topo {
+                padding: 14px 18px;
+            }
+
+            .slogan {
+                display: none;
+            }
 
             .pagina {
                 padding: 0;
@@ -281,10 +413,7 @@
 
             .produto {
                 grid-template-columns: 1fr;
-
                 border-radius: 0;
-
-                min-height: 100vh;
             }
 
             .visualizador {
@@ -300,19 +429,11 @@
             }
 
             h1 {
-                font-size: 32px;
+                font-size: 34px;
             }
 
-            .descricao {
-                font-size: 15px;
-            }
-
-            .ar-button {
-                bottom: 20px;
-
-                font-size: 14px;
-
-                padding: 15px 22px;
+            .destaque {
+                font-size: 18px;
             }
 
         }
@@ -324,18 +445,53 @@
 
 <body>
 
+
+<!-- CABEÇALHO BARBOSA -->
+
+<header class="topo">
+
+    <div class="empresa">
+
+        <div class="logo">
+            B
+        </div>
+
+        <div>
+
+            <div class="empresa-nome">
+                BARBOSA
+            </div>
+
+            <div class="empresa-sub">
+                EQUIPAMENTOS HOSPITALARES
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="slogan">
+        Perto quando <strong>importa.</strong>
+    </div>
+
+</header>
+
+
+
+<!-- PRODUTO -->
+
 <div class="pagina">
 
     <main class="produto">
 
-        <!-- =========================
-             MODELO 3D
-        ========================== -->
+
+        <!-- MODELO 3D -->
 
         <section class="visualizador">
 
-            <div class="badge-3d">
-                MODELO 3D INTERATIVO
+            <div class="badge">
+                ◉ EXPERIÊNCIA 3D INTERATIVA
             </div>
 
 
@@ -355,7 +511,7 @@
 
                 shadow-intensity="1"
 
-                shadow-softness="0.8"
+                shadow-softness=".8"
 
                 exposure="1"
 
@@ -386,94 +542,125 @@
 
 
 
-        <!-- =========================
-             INFORMAÇÕES DO PRODUTO
-        ========================== -->
+        <!-- INFORMAÇÕES -->
 
         <section class="informacoes">
+
+            <div class="apresentado">
+                APRESENTADO POR BARBOSA EQUIPAMENTOS HOSPITALARES
+            </div>
 
             <div class="marca">
                 PHILIPS
             </div>
+
+            <h1>
+                Affiniti 50
+            </h1>
 
             <div class="categoria">
                 SISTEMA DE ULTRASSOM
             </div>
 
 
-            <h1>
-                Affiniti 50
-            </h1>
+            <p class="destaque">
+                Conheça o equipamento antes mesmo
+                de ele chegar à sua clínica.
+            </p>
 
 
             <p class="descricao">
 
-                Explore o Philips Affiniti 50 em 3D,
-                observe o equipamento em diferentes
-                ângulos e visualize como ele ficaria
-                dentro da sua clínica ou ambiente
-                utilizando realidade aumentada.
+                Explore o Affiniti 50 em uma experiência
+                tridimensional interativa. Observe o equipamento
+                por diferentes ângulos e utilize realidade aumentada
+                para visualizar como ele pode se integrar ao seu
+                espaço clínico.
 
             </p>
 
 
 
-            <div class="dados">
+            <div class="beneficios">
 
-                <p>
-                    <strong>Marca</strong>
-                    <span>Philips</span>
-                </p>
+                <div class="beneficio">
 
-                <p>
-                    <strong>Modelo</strong>
-                    <span>Affiniti 50</span>
-                </p>
+                    <span class="check">✓</span>
 
-                <p>
-                    <strong>Categoria</strong>
-                    <span>Ultrassom</span>
-                </p>
+                    <span>
+                        Visualização completa em 360°
+                    </span>
 
-                <p>
-                    <strong>Visualização</strong>
-                    <span>3D + AR</span>
-                </p>
+                </div>
+
+
+                <div class="beneficio">
+
+                    <span class="check">✓</span>
+
+                    <span>
+                        Experiência de realidade aumentada
+                    </span>
+
+                </div>
+
+
+                <div class="beneficio">
+
+                    <span class="check">✓</span>
+
+                    <span>
+                        Simule o equipamento no seu ambiente
+                    </span>
+
+                </div>
+
+
+                <div class="beneficio">
+
+                    <span class="check">✓</span>
+
+                    <span>
+                        Atendimento comercial especializado
+                    </span>
+
+                </div>
 
             </div>
 
 
 
-            <div class="acoes">
-
-                <a
-                    class="orcamento"
-                    href="#"
-                >
-                    Solicitar orçamento
-                </a>
-
-            </div>
+            <a
+                class="cta"
+                href="#"
+            >
+                Solicitar proposta comercial
+            </a>
 
 
+            <a
+                class="cta-secundario"
+                href="#"
+            >
+                Falar com a Barbosa
+            </a>
 
-            <p class="instrucao">
-                Arraste para girar •
-                Use dois dedos para ampliar
+
+            <p class="ajuda">
+                Arraste para girar • Use dois dedos para ampliar
             </p>
 
 
+            <p class="aviso">
 
-            <div class="aviso">
+                Modelo tridimensional demonstrativo criado para
+                visualização conceitual. A representação 3D não
+                corresponde a arquivo CAD oficial do fabricante.
 
-                Modelo 3D demonstrativo criado para
-                visualização conceitual. A representação
-                tridimensional não corresponde a um
-                arquivo CAD oficial fornecido pelo fabricante.
-
-            </div>
+            </p>
 
         </section>
+
 
     </main>
 
